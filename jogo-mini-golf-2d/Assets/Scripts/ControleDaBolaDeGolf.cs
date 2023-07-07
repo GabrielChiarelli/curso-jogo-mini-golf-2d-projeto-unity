@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class ControleDaBolaDeGolf : MonoBehaviour
 {
+    [Header("Referências")]
     [SerializeField] private Rigidbody2D oRigidbody2D;
     [SerializeField] private LineRenderer oLineRenderer;
     [SerializeField] private Camera cameraDoJogo;
     [SerializeField] private Animator oAnimator;
+    [SerializeField] private AudioSource somDeBatendoNaBola;
 
+    [Header("Parêmetros")]
     [SerializeField] private float forcaParaAdicionar;
     [SerializeField] private float limiteDoArrastar;
     [SerializeField] private float velocidadeMinimaParaArrastar;
     private Vector3 posicaoDoMouse;
 
+    [Header("Verificações")]
     private bool estaArrastando;
 
     private void Start()
@@ -80,6 +84,7 @@ public class ControleDaBolaDeGolf : MonoBehaviour
     {
         estaArrastando = false;
         oLineRenderer.enabled = false;
+        somDeBatendoNaBola.Play();
 
         Vector3 posicaoInicial = oLineRenderer.GetPosition(0);
         Vector3 posicaoAtual = oLineRenderer.GetPosition(1);

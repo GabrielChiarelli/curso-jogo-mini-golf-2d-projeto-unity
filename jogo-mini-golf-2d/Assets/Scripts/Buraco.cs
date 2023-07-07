@@ -5,6 +5,7 @@ using UnityEngine;
 public class Buraco : MonoBehaviour
 {
     [SerializeField] private float velocidadeMaximaParaCair;
+    [SerializeField] private AudioSource somDaBolaCaindo;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,6 +14,7 @@ public class Buraco : MonoBehaviour
             if (other.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < velocidadeMaximaParaCair)
             {
                 FindObjectOfType<ControleDaBolaDeGolf>().RodarAnimacaoDaBolaCaindo();
+                somDaBolaCaindo.Play();
             }
         }
     }
