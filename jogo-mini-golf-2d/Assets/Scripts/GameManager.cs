@@ -8,6 +8,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float tempoParaProximaFase;
     [SerializeField] private string nomeDaProximaFase;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SairDoJogo();
+        }
+    }
+
     public void RodarCoroutineCarregarNovaFase()
     {
         StartCoroutine(CarregarNovaFase());
@@ -17,5 +25,11 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(tempoParaProximaFase);
         SceneManager.LoadScene(nomeDaProximaFase);
+    }
+
+    private void SairDoJogo()
+    {
+        Debug.Log("Saiu do Jogo");
+        Application.Quit();
     }
 }
