@@ -7,6 +7,7 @@ public class ControleDaBolaDeGolf : MonoBehaviour
     [SerializeField] private Rigidbody2D oRigidbody2D;
     [SerializeField] private LineRenderer oLineRenderer;
     [SerializeField] private Camera cameraDoJogo;
+    [SerializeField] private Animator oAnimator;
 
     [SerializeField] private float forcaParaAdicionar;
     [SerializeField] private float limiteDoArrastar;
@@ -87,4 +88,12 @@ public class ControleDaBolaDeGolf : MonoBehaviour
         Vector3 forcaFinal = distanciaDoArrastar * forcaParaAdicionar;
         oRigidbody2D.AddForce(-forcaFinal, ForceMode2D.Impulse);
     }   
+
+    public void RodarAnimacaoDaBolaCaindo()
+    {
+        oRigidbody2D.velocity = Vector2.zero;
+        oAnimator.Play("bola-caindo");
+        Destroy(oRigidbody2D.transform.gameObject, 1f);
+        Destroy(this.gameObject, 1f);
+    }
 }
