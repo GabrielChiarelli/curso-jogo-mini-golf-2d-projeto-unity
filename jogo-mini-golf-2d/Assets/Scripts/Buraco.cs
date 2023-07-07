@@ -15,6 +15,7 @@ public class Buraco : MonoBehaviour
             {
                 FindObjectOfType<ControleDaBolaDeGolf>().RodarAnimacaoDaBolaCaindo();
                 somDaBolaCaindo.Play();
+                FindObjectOfType<GameManager>().RodarCoroutineCarregarNovaFase();
             }
         }
     }
